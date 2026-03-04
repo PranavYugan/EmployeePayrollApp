@@ -1,7 +1,13 @@
 package com.seveneleven.EmployePayrollApp.main;
 import java.io.IOException;
 import java.util.*;
-
+/**
+ * Goal of this use case:
+ * - Introduce inheritance and polymorphism
+ * - Show how different user types share common behaviour
+ * - Demonstrate a simple authentication flow
+ * 
+ */
 import com.seveneleven.EmployePayrollApp.Validation.*;
 public class EmployeeRegistrationApp {
 	public static void main(String args[]) {
