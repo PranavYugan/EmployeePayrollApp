@@ -117,17 +117,11 @@ public class EmployeePayrollApp {
                         System.out.println("USE CASE 4 : DOWNLOAD PAYSLIP");
 
                         try {
-                            DownlodablePaySlip downloadSlip = new DownlodablePaySlip(
-                                    generatedSlip.getEmployee().getEmpID(),
-                                    generatedSlip.getEmployee().getName(),
-                                    generatedSlip.getMonth(),
-                                    generatedSlip.getComponents().netPay);
-
-                            DownlodablePaySlip copy = (DownlodablePaySlip) downloadSlip.clone();
-                            System.out.println("Pay slip quality check : " + downloadSlip.equals(copy));
+                            PaySlip copy = (PaySlip) generatedSlip.clone();
+                            System.out.println("Pay slip quality check : " + generatedSlip.equals(copy));
 
                             DownloadToken token = new DownloadToken();
-                            if (!token.isExpired()) {  
+                            if (!token.isExpired()) { 
                                 FileService fs = new FileService();
                                 String txt = fs.savePayslipAsText(copy);
                                 String pdf = fs.savePayslipAsPdf(copy);

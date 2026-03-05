@@ -12,6 +12,6 @@ public class PayrollService {
 		sc.tax=gross*0.10;
 		
 		sc.netPay=gross - (sc.pf+sc.tax);
-		return new PaySlip(employee,sc,month);
+		return new PaySlip(employee.getEmpID(),employee.getName(),month,sc.netPay,employee,sc);
 	}
 }
