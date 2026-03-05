@@ -42,4 +42,26 @@ public class Employee {
 	    }
 
 	}
+
+	public String getEmpID() {
+		return empID;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public UserAccount getUseraccount() {
+		return useraccount;
+	}
+	
+	
 }
