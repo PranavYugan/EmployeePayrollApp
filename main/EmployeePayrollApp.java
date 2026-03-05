@@ -9,7 +9,7 @@ import java.util.*;
  * 
  */
 import com.seveneleven.EmployePayrollApp.Validation.*;
-public class EmployeeRegistrationApp {
+public class EmployeePayrollApp {
 	public static void main(String args[]) {
 		Scanner sc=new Scanner(System.in);
 		
