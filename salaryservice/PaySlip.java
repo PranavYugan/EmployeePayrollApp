@@ -29,4 +29,18 @@ public class PaySlip {
 				+"Net Pay : " + components.netPay + "\n";
 				
 	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public SalaryComponents getComponents() {
+		return components;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+	
+	
 }

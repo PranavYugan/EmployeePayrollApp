@@ -7,7 +7,7 @@ public class SalaryComponents {
 	double allowances;
 	double pf;
 	double tax;
-	double netPay;
+	public double netPay;
 	
 	public SalaryComponents(double basicSalary,double hra,double da,double allowances) {
 		this.basicSalary=basicSalary;
