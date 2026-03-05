@@ -3,15 +3,18 @@ package com.seveneleven.EmployePayrollApp.main;
 import com.seveneleven.EmployePayrollApp.payslipdownload.*;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
 import com.seveneleven.EmployePayrollApp.Validation.*;
 import com.seveneleven.EmployePayrollApp.auth.*;
 import com.seveneleven.EmployePayrollApp.salaryservice.*;
+import com.seveneleven.EmployePayrollApp.dashboard.*;
 
 public class EmployeePayrollApp {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
             Employee registeredEmployee = null;
             PaySlip generatedSlip = null;
+            ArrayList<PaySlip> paySliphistory = new ArrayList<>();
             boolean exit = false;
 
             while (!exit) {
@@ -22,7 +25,8 @@ public class EmployeePayrollApp {
                 System.out.println("2. Employee Login");
                 System.out.println("3. Generate Payslip");
                 System.out.println("4. Download Payslip");
-                System.out.println("5. Exit");
+                System.out.println("5. View Dashboard");
+                System.out.println("6. Exit");
                 System.out.print("Enter your choice: ");
 
                 int choice = sc.nextInt();
@@ -104,6 +108,8 @@ public class EmployeePayrollApp {
                             generatedSlip = payrollService.generatePayslip(
                                     registeredEmployee, month, basic, hra, da, allowances);
 
+                            paySliphistory.add(generatedSlip);
+
                             System.out.println(generatedSlip.toString());
                         }
                         break;
@@ -137,6 +143,31 @@ public class EmployeePayrollApp {
                         break;
 
                     case 5:
+                        if (registeredEmployee == null) {
+                            System.out.println("No employee registered.");
+                            break;
+                        }
+
+                        if (paySliphistory.isEmpty()) {
+                            System.out.println("No payslips generated yet.");
+                            break;
+                        }
+
+                        System.out.println("USE CASE 5 : DASHBOARD");
+                        System.out.print("Enter role (EMPLOYEE / MANAGER): ");
+                        String role = sc.nextLine();
+
+                        Dashboard dashboard = DashboardFactory.getDashboard(role);
+
+                        if (dashboard != null) {
+                            dashboard.display(paySliphistory, registeredEmployee);
+                        } else {
+                            System.out.println("Invalid role.");
+                        }
+
+                        break;
+
+                    case 6:
                         System.out.println("Exiting...");
                         exit = true;
                         break;
